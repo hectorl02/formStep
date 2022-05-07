@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // url: 'https://apidev.virtualsoft.tech/partner_api/Lobby/'
+  url: 'https://restcountries.com/v3.1/all'
+
 };
 
 /*

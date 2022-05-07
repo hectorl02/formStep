@@ -1,0 +1,648 @@
+<!--
+  <div class="input-group py-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="input-group-left">
+  <span class="input-group-text" id="input-group-left-example">
+
+  </span>
+</div>
+ -->
+
+<div class="card">
+  <div class="card-body mx-auto">
+    <div class="container tb-10">
+
+    <div class="row">
+      <div class="col">
+          <div class="timeline-steps aos-init aos-animate" data-aos="fade-up" *ngIf="step === 1">
+
+              <div class="timeline-step">
+                  <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                      <div class="inner-circle"></div>
+                      <p class="h6 mt-3 mb-1">Datos personales</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="timeline-steps aos-init aos-animate" data-aos="fade-up" *ngIf="step === 2">
+
+            <div class="timeline-step">
+                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                    <div class="inner-circle"></div>
+                    <p class="h6 mt-3 mb-1">Datos personales</p>
+                </div>
+            </div>
+             <div class="timeline-step">
+                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                    <div class="inner-circle"></div>
+                    <p class="h6 mt-3 mb-1">Datos Contacto</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-steps aos-init aos-animate" data-aos="fade-up" *ngIf="step === 3">
+          <div class="timeline-step">
+              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                  <div class="inner-circle"></div>
+                  <p class="h6 mt-3 mb-1">Datos personales</p>
+              </div>
+          </div>
+           <div class="timeline-step">
+              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                  <div class="inner-circle"></div>
+                  <p class="h6 mt-3 mb-1">Datos contacto</p>
+              </div>
+          </div>
+          <div class="timeline-step">
+              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                  <div class="inner-circle"></div>
+                  <p class="h6 mt-3 mb-1">Datos Direccion</p>
+              </div>
+          </div>
+      </div>
+      </div>
+  </div>
+
+      <form (ngSubmit)="submit()" [formGroup]="multistep">
+        <div *ngIf="step == 1" formGroupName="userDetails">
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">País</label>
+
+            <select name="" id="" formControlName="country" class="form-control mx-3">
+              <option value="">Selecionar...</option>
+              <option [value]="item.name.common" *ngFor="let item of countryList">
+                {{ item.name.common }}
+              </option>
+            </select>
+            <span class="input-group-text" id="input-group-left-example">
+              <div *ngIf="country.invalid && (country.dirty || country.touched)" class=" ">
+                <div *ngIf="country.status === 'INVALID'" class=" ">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path
+                      d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div *ngIf="country.status === 'VALID'" class=" ">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path
+                    d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </div>
+          <div *ngIf="country.invalid && (country.dirty || country.touched)" class="text-danger">
+            <span *ngIf="country.status === 'INVALID'" class=" ">
+              País requerido
+            </span>
+          </div>
+
+
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mx-2">Género</label>
+
+            <select name="" id="" formControlName="genere" class="form-control mx-3">
+              <option value="">Selecionar...</option>
+              <option [value]="item" *ngFor="let item of genereList">
+                {{ item }}
+              </option>
+            </select>
+            <span class="input-group-text" id="input-group-left-example">
+              <div *ngIf="genere.invalid && (genere.dirty || genere.touched)">
+                <div *ngIf="genere.status === 'INVALID'" class="">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                    <path
+                      d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div *ngIf="genere.status === 'VALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path
+                    d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </div>
+          <div *ngIf="genere.invalid && (genere.dirty || genere.touched)" class="text-danger">
+            <div *ngIf="genere.status === 'INVALID'" >
+              género requerido
+            </div>
+          </div>
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6">Nombre</label>
+            <input
+              type="text"
+              class="form-control mx-3"
+              formControlName="firstname"
+            />
+            <span class="input-group-text" id="input-group-left-example">
+              <div
+              *ngIf="
+                userFirstN.invalid && (userFirstN.dirty || userFirstN.touched)
+              "
+            >
+              <div *ngIf="userFirstN.status === 'INVALID'" class="mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="userFirstN.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="userFirstN.invalid && (userFirstN.dirty || userFirstN.touched)" class="text-danger">
+            <div *ngIf="userFirstN.status === 'INVALID'" class="">
+              nombre requerido
+            </div>
+          </div>
+
+          <div class="input-group py-3">
+            <label class="form-label h6">Apellido</label>
+            <input
+              type="text"
+              class="form-control mx-3"
+              formControlName="lastname"
+            />
+            <span class="input-group-text" id="input-group-left-example">
+              <div
+              *ngIf="
+                userLastName.invalid && (userLastName.dirty || userLastName.touched)
+              "
+            >
+              <div *ngIf="userLastName.status === 'INVALID'" class="mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="userLastName.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="userLastName.invalid && (userLastName.dirty || userLastName.touched)" class="text-danger">
+            <div *ngIf="userLastName.status === 'INVALID'" class="">
+              Apellido requerido
+            </div>
+          </div>
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Tipo de documento</label>
+            <select
+              name=""
+              id=""
+              formControlName="documentType"
+              class="form-control mx-3"
+            >
+              <option value="">Selecionar...</option>
+              <option [value]="item" *ngFor="let item of typeList">
+                {{ item }}
+              </option>
+            </select>
+            <span class="input-group-text" id="input-group-left-example">
+            <div
+              *ngIf="
+                documentType.invalid &&
+                (documentType.dirty || documentType.touched)
+              "
+            >
+              <div *ngIf="documentType.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="documentType.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="documentType.invalid && (documentType.dirty || documentType.touched)" class="text-danger">
+            <div *ngIf="documentType.status === 'INVALID'" class="">
+              Tipo documento requerido
+            </div>
+          </div>
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Número de documento</label>
+            <input
+              type="number"
+              class="form-control mx-3"
+              formControlName="numberDocument"
+            />
+            <span class="input-group-text" id="input-group-left-example">
+            <div
+              *ngIf="
+                numberDocument.invalid &&
+                (numberDocument.dirty || numberDocument.touched)
+              "
+            >
+              <div *ngIf="numberDocument.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="numberDocument.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="numberDocument.invalid && (numberDocument.dirty || numberDocument.touched)" class="text-danger">
+            <div *ngIf="numberDocument.status === 'INVALID'" class="">
+              Tipo documento requerido
+            </div>
+            <div *ngIf="numberDocument.hasError('minlength')" class="text-danger">
+              mínimo 6 caracteres
+            </div>
+          </div>
+
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Foto de documento frontal</label>
+            <input accept="image/jpeg" type="file" class="form-control mx-3" formControlName="imageFront" style="height:40px"/>
+            <span class="input-group-text" id="input-group-left-example">
+            <div *ngIf=" imageFront.invalid && (imageFront.dirty || imageFront.touched) "
+            >
+              <div *ngIf="imageFront.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="imageFront.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="imageFront.invalid && (imageFront.dirty || imageFront.touched)" class="text-danger">
+            <div *ngIf="imageFront.status === 'INVALID'" class="">
+              Foto de documento requerido
+            </div>
+          </div>
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Foto de documento trasera</label>
+            <input accept="image/jpeg" type="file" class="form-control mx-3" formControlName="imageBack" style="height:40px"/>
+            <span class="input-group-text" id="input-group-left-example">
+            <div *ngIf=" imageBack.invalid && (imageBack.dirty || imageBack.touched) " >
+              <div *ngIf="imageBack.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="imageBack.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="imageBack.invalid && (imageBack.dirty || imageBack.touched)" class="text-danger">
+            <div *ngIf="imageBack.status === 'INVALID'" class="">
+              Foto de documento requerido
+            </div>
+          </div>
+
+          <span class="text-white h3" *ngIf=" submitted && multistep.controls['userDetails']['status'] === 'INVALID'">
+            <div class="bg-danger p-3">
+              Por favor ingresa todos los campos
+            </div>
+          </span>
+        </div>
+
+
+        <div *ngIf="step == 2" formGroupName="contactDetails">
+
+          <div class="input-group py-3">
+            <label class="form-label h6 ">Correo electrónico</label>
+            <input type="email" class="form-control mx-3" formControlName="email" required/>
+            <span class="input-group-text" id="input-group-left-example">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="email.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.status === 'INVALID'" class="text-danger">
+              Correo electrónico requerido
+            </div>
+
+          </div>
+
+          <div class="input-group py-3">
+            <label class="form-label h6 ">Contraseña</label>
+            <input type="password" class="form-control mx-3" [formControl]="password" placeholder="mínimo 5 caracteres"/>
+            <span class="input-group-text" id="input-group-left-example">
+
+            <div *ngIf=" password.invalid && (password.dirty || password.touched)">
+              <div *ngIf="password.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="password.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf=" password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.status === 'INVALID'" class=" text-danger">
+              Password requerido
+            </div>
+            <div *ngIf="password.hasError('minlength')" class="text-danger">
+              mínimo 5 caracteres
+            </div>
+          </div>
+
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Confirmar contraseña</label>
+            <input type="password" class="form-control mx-3" [formControl]="confirmPass"  />
+            <span class="input-group-text" id="input-group-left-example">
+            <div *ngIf="confirmPass.dirty && confirmPass.errors?.['noMatch']">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path
+                  d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                />
+              </svg>
+            </div>
+            <div *ngIf="confirmPass.dirty && !confirmPass.errors?.['noMatch']" class="mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <P *ngIf="confirmPass.dirty && confirmPass.errors?.['noMatch']" class="text-danger">
+            <strong>Contraseña</strong> Y <strong>Confirmar Contraseña</strong> deben ser <strong>iguales</strong>
+          </P>
+
+          <div class="input-group py-3">
+            <label class="form-label h6 m-auto">Número de teléfono</label>
+            <input type="number" class="form-control mx-3" formControlName="phone" />
+            <span class="input-group-text" id="input-group-left-example">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+              <div *ngIf="phone.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="phone.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            <div *ngIf="phone.status === 'INVALID'" class="text-danger">
+              Número de teléfono requerido
+            </div>
+            <div *ngIf="phone.hasError('minlength')" class="text-danger">
+              mínimo 6 números
+            </div>
+          </div>
+
+          <div class="input-group py-3">
+            <label class="form-label h6 mt-2">Número de célular</label>
+            <input
+              type="number"
+              class="form-control mx-3"
+              formControlName="cellphone"
+            />
+            <span class="input-group-text" id="input-group-left-example">
+
+            <div
+              *ngIf="
+                cellphone.invalid && (cellphone.dirty || cellphone.touched)
+              "
+            >
+              <div *ngIf="cellphone.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="cellphone.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div
+              *ngIf="
+                cellphone.invalid && (cellphone.dirty || cellphone.touched)
+              "
+            >
+              <div *ngIf="cellphone.status === 'INVALID'" class="text-danger">
+                Número de celular requerido
+              </div>
+              <div *ngIf="cellphone.hasError('minlength')" class="text-danger">
+                mínimo 6 números
+              </div>
+            </div>
+
+          <span
+            class="text-white h3" *ngIf=" submitted && flag === 2 " >
+            <div class="bg-danger p-3">
+              Por favor ingresa todos los campos
+            </div>
+          </span>
+        </div>
+
+        <div *ngIf="step == 3" formGroupName="personalDetails">
+
+          <div class="input-group py-3">
+            <label class="form-label h6 ">Dirección Residencia</label>
+            <input type="text" class="form-control mx-3" formControlName="address" />
+            <span class="input-group-text" id="input-group-left-example">
+              <div *ngIf="address.invalid && (address.dirty || address.touched)">
+              <div *ngIf="address.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="address.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+            </span>
+          </div>
+          <div *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address.status === 'INVALID'" class="text-danger">
+              Dirección Residencia requerido
+            </div>
+          </div>
+
+          <div class="input-group py-3">
+            <label class="form-label h6 ">Código Postal</label>
+            <input
+              type="number"
+              class="form-control mx-3"
+              formControlName="zipCode"
+            />
+            <span class="input-group-text" id="input-group-left-example">
+
+            <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+              <div *ngIf="zipCode.status === 'INVALID'" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="zipCode.status === 'VALID'" class="">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"
+                />
+              </svg>
+            </div>
+
+            </span>
+          </div>
+          <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+            <div *ngIf="zipCode.status === 'INVALID'" class="text-danger">
+              Código Postal requerido
+            </div>
+          </div>
+
+          <span
+            class="text-white h3"
+            *ngIf="
+              multistep.controls['personalDetails']['status'] === 'INVALID' &&
+              flag == 3
+            "
+          >
+          <div class="bg-danger p-3">
+            Por favor ingresa todos los campos
+          </div>
+          </span>
+        </div>
+
+        <div class="mt-3">
+          <a class="btn btn-primary mx-2" *ngIf="step != 1" (click)="previous()"
+            >Anterior</a
+          >
+          <button class="btn btn-primary mx-2 " *ngIf="step != 3">
+            Siguiente
+          </button>
+          <button type="submit" class="btn btn-primary mx-2 " *ngIf="step === 3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Enviar
+          </button>
+        </div>
+        <br />
+      </form>
+      <!-- Modal -->
+      <!-- <div *ngIf="flagModal"> -->
+      <div class="modal fade" id="exampleModal" >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title h4" id="exampleModalLabel">DATA JSON</h5>
+            </div>
+            <div class="modal-body h4">
+              Datos enviados
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+<!-- </div> -->
+
+
